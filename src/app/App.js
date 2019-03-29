@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import Header from './Header'
-import Footer from './Footer'
-import FetchPeople from './../services/FetchPeople'
-import * as shared from './../shared/constants.js'
-import './App.css';
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import UsersPage from './../components/UsersPage'
+import fetchPeople from './../services/FetchPeople'
 
-const url = `${shared.BASE_API_URL}/?results=15`;
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -17,12 +16,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(url)
-      .then((res) => {
-        return res.json()
-      })
-      .then((data) => {
-        this.setState({ people: data.results })
+    fetchPeople()
+      .then((users) => {
+        this.setState({ people: users })
       })
   }
 
@@ -33,7 +29,7 @@ class App extends Component {
     return (
       <>
         <Header />
-        <FetchPeople data={people} />
+        <UsersPage users={people} />
         <Footer />
       </>
     );
