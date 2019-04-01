@@ -12,7 +12,11 @@ class App extends Component {
 
     this.state = {
       people: [],
+      useGridLayout: true,
     }
+  }
+  changeLayout = (event) => {
+    console.log(5);
   }
 
   componentDidMount() {
@@ -24,13 +28,15 @@ class App extends Component {
 
 
   render() {
-    const { people } = this.state;
+    const { people, useGridLayout } = this.state;
 
     return (
       <>
         <Header />
-        <UsersPage users={people} />
-        <PostCard users={people} />
+        {useGridLayout
+          ? <PostCard users={people} />
+          : <UsersPage users={people} />
+        }
         <Footer />
       </>
     );
