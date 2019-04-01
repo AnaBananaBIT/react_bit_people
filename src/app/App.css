@@ -1,7 +1,15 @@
 .page-footer {
+    margin-top: 3%;
     padding: 0;
 }
 
 .collection {
     margin-top: 3%;
+}
+
+.row {
+    display: inline-block;
+    width: 20%;
+    margin:0 20px;
+    padding: 10px;
 }
