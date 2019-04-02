@@ -13,10 +13,13 @@ class App extends Component {
     this.state = {
       people: [],
       useGridLayout: true,
+      handleToggleClick: this.handleToggleClick.bind(this),
     }
   }
-  changeLayout = (event) => {
-    console.log(5);
+  handleToggleClick = () => {
+    this.setState({
+      useGridLayout: !this.state.useGridLayout
+    })
   }
 
   componentDidMount() {
@@ -32,11 +35,12 @@ class App extends Component {
 
     return (
       <>
-        <Header />
+        <Header onToggleClick={this.handleToggleClick} />
         {useGridLayout
           ? <PostCard users={people} />
           : <UsersPage users={people} />
         }
+
         <Footer />
       </>
     );
