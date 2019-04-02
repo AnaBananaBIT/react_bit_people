@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import UsersPage from './../view/UsersPage'
 import fetchPeople from './../services/FetchPeople'
 import PostCard from './../view/PostCard'
+import Search from '../components/Search'
 import './App.css';
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
     this.state = {
       people: [],
       useGridLayout: false,
-      handleToggleClick: this.handleToggleClick.bind(this),
+      handleToggleClick: this.handleToggleClick.bind(this)
     }
   }
   handleToggleClick = () => {
@@ -24,7 +25,10 @@ class App extends Component {
   handleRefresh = () => {
     fetchPeople()
       .then((users) => {
-        this.setState({ people: users })
+        this.setState({
+          people: users,
+          searchPeople: users
+        })
       })
 
   }
@@ -35,11 +39,12 @@ class App extends Component {
           people: users,
           useGridLayout: JSON.parse(localStorage.getItem('useGridLayout'))
         })
-
-
       })
   }
-
+  searchUsers = (event) => {
+    const inputValue = event.target.value
+    console.log(inputValue)
+  }
 
   render() {
     const { people, useGridLayout } = this.state;
@@ -47,6 +52,7 @@ class App extends Component {
     return (
       <>
         <Header onToggleClick={this.handleToggleClick} onRefresh={this.handleRefresh} />
+        <Search onSearch={this.searchUsers} />
         {useGridLayout
           ? <PostCard users={people} />
           : <UsersPage users={people} />
