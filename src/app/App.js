@@ -57,7 +57,7 @@ class App extends Component {
     return (
       <>
         <Header onToggleClick={this.handleToggleClick} onRefresh={this.handleRefresh} />
-        <Search onSearch={this.searchUsers} />
+        <Search onSearch={this.searchUsers} value={this.state.searchQuery} />
         {useGridLayout
           ? <PostCard users={searchPeople} />
           : <UsersPage users={searchPeople} />
