@@ -21,10 +21,12 @@ const fetchPeople = () => (
                     elem.email,
                     elem.dob,
                     elem.gender
+
+
                 )
             ))
 
-            console.log(users);
+
 
             return users
         })

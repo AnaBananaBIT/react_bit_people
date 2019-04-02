@@ -5,7 +5,7 @@ const UsersPage = (props) => (
     <ul className="collection container">
 
         {props.users.map(user => (
-            <li key={user.cell} className="collection-item avatar">
+            <li key={user.cell} className={`collection-collection-item avatar ${user.gender}`}>
                 <img src={user.picture} alt="" className="circle"></img>
                 <span className="title"><b>{user.name} {user.surname}</b></span>
                 <p><i className="fas fa-envelope">&nbsp; </i>{user.email}</p>

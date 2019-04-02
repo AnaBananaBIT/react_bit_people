@@ -14,9 +14,6 @@ class App extends Component {
       people: [],
       useGridLayout: true,
       handleToggleClick: this.handleToggleClick.bind(this),
-      // refreshing: true,
-      // handleRefresh: this.handleRefresh.bind(this)
-
     }
   }
   handleToggleClick = () => {
@@ -36,6 +33,7 @@ class App extends Component {
     fetchPeople()
       .then((users) => {
         this.setState({ people: users })
+
       })
   }
 

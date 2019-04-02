@@ -4,7 +4,7 @@ const PostCard = (props) => {
     return (
 
         props.users.map(user => (
-            < div className="row" >
+            < div className={`row ${user.gender}`} >
                 <div className="card col4 m4">
                     <div className="card-image">
                         <img src={user.pictureLarge} alt="" />
@@ -13,6 +13,7 @@ const PostCard = (props) => {
                     <div className="card-content">
                         <p>{user.email}</p>
                         <p>Birthday date:{user.dob}</p>
+
                     </div>
                 </div>
             </div >
