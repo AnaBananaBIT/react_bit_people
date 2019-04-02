@@ -1,5 +1,5 @@
 import * as shared from './../shared/constants.js'
-import UserObj from './../entities/UserObj'
+import UsersData from './../entities/UsersData'
 // import { userInfo } from 'os';
 
 const url = `${shared.BASE_API_URL}/?results=15`;
@@ -12,7 +12,7 @@ const fetchPeople = () => (
         .then((data) => {
 
             const users = data.results.map((elem) => (
-                new UserObj(
+                new UsersData(
                     elem.cell,
                     elem.name.first,
                     elem.name.last,

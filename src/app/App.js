@@ -14,6 +14,9 @@ class App extends Component {
       people: [],
       useGridLayout: true,
       handleToggleClick: this.handleToggleClick.bind(this),
+      // refreshing: true,
+      // handleRefresh: this.handleRefresh.bind(this)
+
     }
   }
   handleToggleClick = () => {
@@ -22,6 +25,13 @@ class App extends Component {
     })
   }
 
+  handleRefresh = () => {
+    fetchPeople()
+      .then((users) => {
+        this.setState({ people: users })
+      })
+
+  }
   componentDidMount() {
     fetchPeople()
       .then((users) => {
@@ -35,7 +45,7 @@ class App extends Component {
 
     return (
       <>
-        <Header onToggleClick={this.handleToggleClick} />
+        <Header onToggleClick={this.handleToggleClick} onRefresh={this.handleRefresh} />
         {useGridLayout
           ? <PostCard users={people} />
           : <UsersPage users={people} />
