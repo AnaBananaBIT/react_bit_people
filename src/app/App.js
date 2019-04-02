@@ -12,14 +12,13 @@ class App extends Component {
 
     this.state = {
       people: [],
-      useGridLayout: true,
+      useGridLayout: false,
       handleToggleClick: this.handleToggleClick.bind(this),
     }
   }
   handleToggleClick = () => {
-    this.setState({
-      useGridLayout: !this.state.useGridLayout
-    })
+    this.setState({ useGridLayout: !this.state.useGridLayout })
+    localStorage.setItem('useGridLayout', !this.state.useGridLayout)
   }
 
   handleRefresh = () => {
@@ -32,7 +31,11 @@ class App extends Component {
   componentDidMount() {
     fetchPeople()
       .then((users) => {
-        this.setState({ people: users })
+        this.setState({
+          people: users,
+          useGridLayout: JSON.parse(localStorage.getItem('useGridLayout'))
+        })
+
 
       })
   }
