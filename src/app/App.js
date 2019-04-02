@@ -5,6 +5,7 @@ import UsersPage from './../view/UsersPage'
 import fetchPeople from './../services/FetchPeople'
 import PostCard from './../view/PostCard'
 import Search from '../components/Search'
+import Animation from '../components/Animation'
 import './App.css';
 
 class App extends Component {
@@ -46,9 +47,10 @@ class App extends Component {
     console.log(inputValue)
   }
 
+
+
   render() {
     const { people, useGridLayout } = this.state;
-
     return (
       <>
         <Header onToggleClick={this.handleToggleClick} onRefresh={this.handleRefresh} />
