@@ -7,6 +7,7 @@ import PostCard from './../view/PostCard'
 import Search from '../components/Search'
 import Animation from '../components/Animation'
 import SearchMessage from '../components/SearchMessage'
+import About from '../components/About'
 import './App.css';
 
 class App extends Component {
@@ -74,6 +75,7 @@ class App extends Component {
         <Header onToggleClick={this.handleToggleClick} onRefresh={this.handleRefresh} />
 
         <Search searchUsers={this.searchUsers} />
+
         {searchPeople.length === 0 ? <SearchMessage /> :
 
           !searchPeople.length ?
