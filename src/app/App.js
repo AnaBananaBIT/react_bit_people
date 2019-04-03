@@ -30,6 +30,7 @@ class App extends Component {
       .then((users) => {
         this.setState({
           people: users,
+          searchPeople: users
 
         })
       })
@@ -50,7 +51,6 @@ class App extends Component {
 
   searchUsers = (event) => {
     let searchQuery = event.target.value
-    // console.log(event.target.value);
     const result = this.state.people.filter(user => {
       return user.name.toLowerCase().includes(searchQuery)
     })
@@ -62,7 +62,7 @@ class App extends Component {
 
   render() {
 
-    const { people, searchPeople, useGridLayout } = this.state;
+    const { searchPeople, useGridLayout } = this.state;
 
     return (
       <>
