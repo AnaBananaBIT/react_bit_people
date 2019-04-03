@@ -55,9 +55,8 @@ class App extends Component {
 
   searchUsers = (event) => {
     let searchQuery = event.target.value
-    console.log(searchQuery);
     const result = this.state.people.filter(user => {
-      return (user.name.toUpperCase().includes(searchQuery.toUpperCase()) || user.surname.toUpperCase().includes(searchQuery.toUpperCase()))
+      return (user.name.toUpperCase().includes(searchQuery.toUpperCase()) || user.surname.toLowerCase().includes(searchQuery.toLowerCase()))
     })
     this.setState({
       searchPeople: result,

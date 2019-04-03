@@ -8,6 +8,7 @@ const fetchPeople = () => (
     fetch(url)
         .then((res) => {
             return res.json()
+
         })
         .then((data) => {
 
@@ -27,7 +28,7 @@ const fetchPeople = () => (
             ))
 
 
-
+            console.log(users)
             return users
         })
 )
