@@ -55,8 +55,9 @@ class App extends Component {
 
   searchUsers = (event) => {
     let searchQuery = event.target.value
+    console.log(searchQuery);
     const result = this.state.people.filter(user => {
-      return user.name.toLowerCase().includes(searchQuery)
+      return (user.name.toUpperCase().includes(searchQuery.toUpperCase()) || user.surname.toUpperCase().includes(searchQuery.toUpperCase()))
     })
     this.setState({
       searchPeople: result,
@@ -68,15 +69,9 @@ class App extends Component {
 
     const { searchPeople, useGridLayout } = this.state;
 
-
-
     return (
       <>
-
         <Header onToggleClick={this.handleToggleClick} onRefresh={this.handleRefresh} />
-
-
-
         <Switch>
 
           <Route exact path='/' render={() => (

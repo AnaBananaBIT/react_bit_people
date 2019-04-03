@@ -14,8 +14,8 @@ const fetchPeople = () => (
             const users = data.results.map((elem) => (
                 new UsersData(
                     elem.cell,
-                    elem.name.first,
-                    elem.name.last,
+                    elem.name.first[0].toUpperCase() + elem.name.first.slice(1),
+                    elem.name.last[0].toUpperCase() + elem.name.last.slice(1),
                     elem.picture.thumbnail,
                     elem.picture.large,
                     elem.email,
