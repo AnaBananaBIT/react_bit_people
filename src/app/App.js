@@ -33,7 +33,7 @@ class App extends Component {
       .then((users) => {
         this.setState({
           people: users,
-          searchPeople: users
+          searchPeople: users,
 
 
         })
@@ -63,6 +63,7 @@ class App extends Component {
 
     })
   }
+
 
   render() {
 
