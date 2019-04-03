@@ -14,8 +14,10 @@ class App extends Component {
 
     this.state = {
       people: [],
+      searchPeople: [],
+      searchQuery: '',
       useGridLayout: false,
-      handleToggleClick: this.handleToggleClick.bind(this)
+      handleToggleClick: this.handleToggleClick.bind(this),
     }
   }
   handleToggleClick = () => {
@@ -38,26 +40,37 @@ class App extends Component {
       .then((users) => {
         this.setState({
           people: users,
+          searchPeople: users,
           useGridLayout: JSON.parse(localStorage.getItem('useGridLayout'))
         })
       })
   }
+
+
+
   searchUsers = (event) => {
-    const inputValue = event.target.value
-    console.log(inputValue)
+    let searchQuery = event.target.value
+    // console.log(event.target.value);
+    const result = this.state.people.filter(user => {
+      return user.name.toLowerCase().includes(searchQuery)
+    })
+    this.setState({
+      searchPeople: result
+
+    })
   }
 
-
-
   render() {
-    const { people, useGridLayout } = this.state;
+
+    const { people, searchPeople, useGridLayout } = this.state;
+
     return (
       <>
         <Header onToggleClick={this.handleToggleClick} onRefresh={this.handleRefresh} />
-        <Search onSearch={this.searchUsers} />
+        <Search searchUsers={this.searchUsers} />
         {useGridLayout
-          ? <PostCard users={people} />
-          : <UsersPage users={people} />
+          ? <PostCard users={searchPeople} />
+          : <UsersPage users={searchPeople} />
         }
 
         <Footer />

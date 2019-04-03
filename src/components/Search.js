@@ -1,12 +1,12 @@
 import React from 'react'
 
-const SearchBar = (props) => {
+const Search = (props) => {
     return (
         <nav className="search">
             <div className="nav-wrapper">
                 <form>
                     <div className="input-field">
-                        <input id="search" type="search" onChange={props.onSearch} />
+                        <input id="search" type="search" onChange={props.searchUsers} />
                         <label className="label-icon"><i className="material-icons"><i className="fas fa-search"></i></i></label>
 
                     </div>
@@ -16,4 +16,4 @@ const SearchBar = (props) => {
     )
 }
 
-export default SearchBar
+export default Search
