@@ -42,12 +42,12 @@ class App extends Component {
         this.setState({
           people: users,
           searchPeople: users,
-          useGridLayout: JSON.parse(localStorage.getItem('useGridLayout'))
+          useGridLayout: JSON.parse(localStorage.getItem('useGridLayout')),
+
+
         })
       })
   }
-
-
 
   searchUsers = (event) => {
     let searchQuery = event.target.value
@@ -60,17 +60,23 @@ class App extends Component {
     })
   }
 
+
   render() {
+
 
     const { searchPeople, useGridLayout } = this.state;
 
     return (
       <>
+
         <Header onToggleClick={this.handleToggleClick} onRefresh={this.handleRefresh} />
+
         <Search searchUsers={this.searchUsers} />
-        {useGridLayout
-          ? <PostCard users={searchPeople} />
-          : <UsersPage users={searchPeople} />
+        {!searchPeople.length ?
+          <Animation /> :
+          useGridLayout
+            ? <PostCard users={searchPeople} />
+            : <UsersPage users={searchPeople} />
         }
 
         <Footer />
