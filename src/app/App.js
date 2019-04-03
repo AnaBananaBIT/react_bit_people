@@ -32,9 +32,10 @@ class App extends Component {
           people: users,
           searchPeople: users
 
-        })
-      })
 
+        })
+
+      })
   }
   componentDidMount() {
     fetchPeople()
