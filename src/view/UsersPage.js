@@ -6,10 +6,12 @@ const UsersPage = (props) => (
 
         {props.users.map(user => (
             <li key={user.cell} className={`collection-collection-item avatar ${user.gender}`}>
+                <div className= "col 12">
                 <img src={user.picture} alt="" className="circle"></img>
                 <span className="title"><b>{user.name} {user.surname}</b></span>
                 <p><i className="fas fa-envelope">&nbsp; </i>{user.email}</p>
                 <p><i className="fas fa-birthday-cake">&nbsp; </i>{user.dob}</p>
+                </div>
             </li>
 
         ))}

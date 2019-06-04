@@ -73,25 +73,17 @@ class App extends Component {
       <>
         <Header onToggleClick={this.handleToggleClick} onRefresh={this.handleRefresh} />
         <Switch>
-
           <Route exact path='/' render={() => (
             <main>
-
-
               <Search searchUsers={this.searchUsers} />
-              {searchPeople.length === 0 ? <SearchMessage /> :
-
-                !searchPeople.length ?
-                  <Animation /> :
+              {!searchPeople.length?<Animation /> :
+                searchPeople.length === 0 ?
+                <SearchMessage/> :
                   useGridLayout
                     ? <PostCard users={searchPeople} />
-                    : <UsersPage users={searchPeople} />
-              }
-            </main>
-
-          )} />
+                    : <UsersPage users={searchPeople} />}
+            </main> )} />
           <Route exact path='/about' component={About} />
-
         </Switch>
         <Footer />
       </>
